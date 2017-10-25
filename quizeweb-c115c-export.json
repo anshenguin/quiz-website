@@ -1,0 +1,49 @@
+{
+  "Quizzes" : {
+    "Quiz 1" : {
+      "Name" : "How well do you know your friend?",
+      "Questions" : {
+        "Question 1" : {
+          "Name" : "What is your favorite color?",
+          "Option 1" : "Red",
+          "Option 2" : "Blue",
+          "Option 3" : "Green",
+          "Option 4" : "Purple",
+          "Option 5" : "Pink",
+          "Option 6" : "I don't have a preference"
+        },
+        "Question 2" : {
+          "Name" : "What would you prefer as a pet?",
+          "Option 1" : "Danish",
+          "Option 2" : "Dogs",
+          "Option 3" : "Cats",
+          "Option 4" : "I don't like pets"
+        },
+        "Question 3" : {
+          "Name" : "What superpower would you rather have?",
+          "Option 1" : "Being Invisible",
+          "Option 2" : "Time Traveller",
+          "Option 3" : "Super Strength",
+          "Option 4" : "Lightning Speed"
+        }
+      }
+    }
+  },
+  "Users" : {
+    "-Xdbjaksda" : {
+      "Name" : "Anshul",
+      "Quiz 1" : {
+        "Questions" : {
+          "Question 2" : {
+            "Correct" : "Option 3",
+            "Name" : "What would Anshul rather have as a pet?",
+            "Option 1" : "A Cat",
+            "Option 2" : "A Dog",
+            "Option 3" : "I don't like pets"
+          }
+        },
+        "Quizlink" : "www.facebook.com"
+      }
+    }
+  }
+}

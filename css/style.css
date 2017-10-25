@@ -1,0 +1,32 @@
+.questions{
+  font-size:20px;
+  margin-top: 5%;
+}
+.options{
+  font-size:20px;
+  width:90%;
+  margin:0 auto;
+}
+.option{
+  white-space:normal;
+}
+#skip{
+  float:right;
+  margin-right:5%;
+}
+#prev{
+  margin-left:5%;
+}
+#submit
+{
+  margin: 0 auto;
+}
+#question{
+    width: 80%;
+    padding-left:5%;
+}
+#queNumber{
+    position: absolute;
+    right:10%;
+    top:6%;
+}
