@@ -1,0 +1,28 @@
+<html>
+    
+    <head>
+    
+        <title>Enter your name!</title>
+        <link href="user.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+        <input type="text" placeholder="Enter Your Name " id="name"><br>
+        <button id="submitButton" onclick="submit()">Submit</button>
+        </div>
+        <script src="user.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyCOtYNnMubIaE_rlU-Cxy-6hGP927GXXyQ",
+        authDomain: "quizeweb-c115c.firebaseapp.com",
+        databaseURL: "https://quizeweb-c115c.firebaseio.com",
+        projectId: "quizeweb-c115c",
+        storageBucket: "quizeweb-c115c.appspot.com",
+        messagingSenderId: "925654173500"
+      };
+      firebase.initializeApp(config);
+    </script>
+    </body>
+</html>
