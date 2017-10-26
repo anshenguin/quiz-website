@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
+    
     var questionAnswer = {};
+    var questionsAnswered = [];
     $("#prev").hide();
     $("#submit").hide();
     $("#skip").hide();
@@ -32,6 +34,7 @@ $(document).ready(function(){
             i = 1;
             $(".questions").fadeOut(function(){
                     $(".questions").fadeIn();
+                
                 $("#skip").fadeIn();
                 queNumber.innerHTML = nthquestion + "/" + totalQuestions;
             document.getElementById("q1").innerHTML= questionAnswer["Question "+currentQuestion]["Name"];
@@ -46,6 +49,8 @@ $(document).ready(function(){
             });
             // Click on OPTIONS
             $(".options").click(function(){
+                questionsAnswered.push(currentQuestion);
+                console.log(questionsAnswered);
                 currentQuestion++;
                 if(currentQuestion>1){
           $("#prev").show();
@@ -78,11 +83,28 @@ $(document).ready(function(){
             });
             
             // Click On SKIP
-                        $("#skip").click(function(){
+                        $("#skip").click(handleClick);
+            function handleClick(){
                 currentQuestion++;
-                if(currentQuestion>1){
-          $("#prev").show();
-        }
+                console.log("current question: "+currentQuestion);
+            if(currentQuestion===totalQuestions+1)
+                currentQuestion = 1;
+        var isAnswered = false;
+                for(var z = 0 ; z < questionsAnswered.length ; z++){
+                    console.log("for chal rha hai");
+                    if(currentQuestion === questionsAnswered[z]){
+                        isAnswered = true;
+                        console.log("if chal rha hai");
+                    }
+                }
+                if(isAnswered){
+
+//                    currentQuestion++;
+                    handleClick();
+                }
+                            
+                else{
+//                currentQuestion++;
                 if (currentQuestion === totalQuestions){
                     $("#submit").fadeIn();
                 }
@@ -106,11 +128,13 @@ $(document).ready(function(){
                 
                 
             
-                
-            });
+                }
+    }
             
             
         });
+    
+    
     
     
 });
