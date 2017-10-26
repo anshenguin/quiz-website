@@ -19,7 +19,8 @@
 }
 #submit
 {
-  margin: 0 auto;
+  float:left;
+    margin-left: 5%;
 }
 #question{
     width: 80%;
