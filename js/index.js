@@ -1,20 +1,17 @@
 
 $(document).ready(function(){
+    
     var questionAnswer = {};
-    $("#prev").hide();
-    $("#submit").hide();
+    var questionsAnswered = [];
     $("#skip").hide();
     var rootRef = firebase.database().ref().child("Quizzes").child("Quiz 1").child("Questions");
         rootRef.on('value',function(snapshot) {
             var currentQuestion = 1;
-            if(currentQuestion<=1){
-                $("#prev").hide();
-            }
             var i = 1;
             var nthquestion = 1;
             var totalQuestions ; //change this use length of json
             var queNumber = document.getElementById("queNumber");
-            
+            var reqdQuestions = 3;
             snapshot.forEach(function(childSnapshot) {
                 var json = childSnapshot.val();
                 questionAnswer["Question "+i] = json;
@@ -32,6 +29,7 @@ $(document).ready(function(){
             i = 1;
             $(".questions").fadeOut(function(){
                     $(".questions").fadeIn();
+                
                 $("#skip").fadeIn();
                 queNumber.innerHTML = nthquestion + "/" + totalQuestions;
             document.getElementById("q1").innerHTML= questionAnswer["Question "+currentQuestion]["Name"];
@@ -45,16 +43,33 @@ $(document).ready(function(){
             }
             });
             // Click on OPTIONS
-            $(".options").click(function(){
+            $(".options").click(handleOptionClick);
+            
+            function handleOptionClick(){
+            if(nthquestion === reqdQuestions){
+                currentQuestion = 100;
+            }
+            questionsAnswered.push(currentQuestion);
+                console.log(questionsAnswered);
                 currentQuestion++;
-                if(currentQuestion>1){
-          $("#prev").show();
-        }
-                if (currentQuestion === totalQuestions){
-                    $("#submit").fadeIn();
-                }
                 nthquestion++;
+                if(currentQuestion===totalQuestions+1)
+                currentQuestion = 1;
+        var isAnswered = false;
+                for(var z = 0 ; z < questionsAnswered.length ; z++){
+                    console.log("for chal rha hai");
+                    if(currentQuestion === questionsAnswered[z]){
+                        isAnswered = true;
+                        console.log("if chal rha hai");
+                    }
+                }
+                if(isAnswered){
+
+//                    currentQuestion++;
+                    handleClick();
+                }
                 
+                else{
                 $(".questions").fadeOut(function(){
                     $(".questions").fadeIn();
                     $("#skip").fadeIn();
@@ -69,22 +84,36 @@ $(document).ready(function(){
                 }
                 
             }
+               
                     
                     });
-                
-                
-            
-                
-            });
+                     }
+            }
             
             // Click On SKIP
-                        $("#skip").click(function(){
+                        $("#skip").click(handleClick);
+            function handleClick(){
                 currentQuestion++;
-                if(currentQuestion>1){
-          $("#prev").show();
-        }
+                console.log("current question: "+currentQuestion);
+            if(currentQuestion===totalQuestions+1)
+                currentQuestion = 1;
+        var isAnswered = false;
+                for(var z = 0 ; z < questionsAnswered.length ; z++){
+                    console.log("for chal rha hai");
+                    if(currentQuestion === questionsAnswered[z]){
+                        isAnswered = true;
+                        console.log("if chal rha hai");
+                    }
+                }
+                if(isAnswered){
+
+//                    currentQuestion++;
+                    handleClick();
+                }
+                            
+                else{
+//                currentQuestion++;
                 if (currentQuestion === totalQuestions){
-                    $("#submit").fadeIn();
                 }
                 queNumber.innerHTML = nthquestion + "/" + totalQuestions;
                 $(".questions").fadeOut(function(){
@@ -106,11 +135,13 @@ $(document).ready(function(){
                 
                 
             
-                
-            });
+                }
+    }
             
             
         });
+    
+    
     
     
 });
