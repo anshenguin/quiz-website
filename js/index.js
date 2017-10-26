@@ -3,20 +3,15 @@ $(document).ready(function(){
     
     var questionAnswer = {};
     var questionsAnswered = [];
-    $("#prev").hide();
-    $("#submit").hide();
     $("#skip").hide();
     var rootRef = firebase.database().ref().child("Quizzes").child("Quiz 1").child("Questions");
         rootRef.on('value',function(snapshot) {
             var currentQuestion = 1;
-            if(currentQuestion<=1){
-                $("#prev").hide();
-            }
             var i = 1;
             var nthquestion = 1;
             var totalQuestions ; //change this use length of json
             var queNumber = document.getElementById("queNumber");
-            
+            var reqdQuestions = 3;
             snapshot.forEach(function(childSnapshot) {
                 var json = childSnapshot.val();
                 questionAnswer["Question "+i] = json;
@@ -48,18 +43,33 @@ $(document).ready(function(){
             }
             });
             // Click on OPTIONS
-            $(".options").click(function(){
-                questionsAnswered.push(currentQuestion);
+            $(".options").click(handleOptionClick);
+            
+            function handleOptionClick(){
+            if(nthquestion === reqdQuestions){
+                currentQuestion = 100;
+            }
+            questionsAnswered.push(currentQuestion);
                 console.log(questionsAnswered);
                 currentQuestion++;
-                if(currentQuestion>1){
-          $("#prev").show();
-        }
-                if (currentQuestion === totalQuestions){
-                    $("#submit").fadeIn();
-                }
                 nthquestion++;
+                if(currentQuestion===totalQuestions+1)
+                currentQuestion = 1;
+        var isAnswered = false;
+                for(var z = 0 ; z < questionsAnswered.length ; z++){
+                    console.log("for chal rha hai");
+                    if(currentQuestion === questionsAnswered[z]){
+                        isAnswered = true;
+                        console.log("if chal rha hai");
+                    }
+                }
+                if(isAnswered){
+
+//                    currentQuestion++;
+                    handleClick();
+                }
                 
+                else{
                 $(".questions").fadeOut(function(){
                     $(".questions").fadeIn();
                     $("#skip").fadeIn();
@@ -74,13 +84,11 @@ $(document).ready(function(){
                 }
                 
             }
+               
                     
                     });
-                
-                
-            
-                
-            });
+                     }
+            }
             
             // Click On SKIP
                         $("#skip").click(handleClick);
@@ -106,7 +114,6 @@ $(document).ready(function(){
                 else{
 //                currentQuestion++;
                 if (currentQuestion === totalQuestions){
-                    $("#submit").fadeIn();
                 }
                 queNumber.innerHTML = nthquestion + "/" + totalQuestions;
                 $(".questions").fadeOut(function(){
