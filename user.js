@@ -1,3 +1,8 @@
-function submit(){
+$(document).ready(function(){    
     
-}
+    
+    
+    
+    
+});
+

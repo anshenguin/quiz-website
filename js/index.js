@@ -1,6 +1,22 @@
+//console.log(user.name);
 
 $(document).ready(function(){
-    
+    var name = "";
+     $("#quiz").hide();
+    $("#submitButton").click(function(){
+    var rootRef = firebase.database().ref().child("Users").push();
+    name = $("#name").val();
+    rootRef.set({Name:name}).then(function() {
+    console.log('Synchronization succeeded');
+        $("#user").fadeOut(function(){
+         $("#quiz").fadeIn();   
+        });
+  })
+  .catch(function(error) {
+    console.log('Synchronization failed');
+    });
+
+    });
     var questionAnswer = {};
     var questionsAnswered = [];
     $("#skip").hide();
@@ -9,7 +25,7 @@ $(document).ready(function(){
             var currentQuestion = 1;
             var i = 1;
             var nthquestion = 1;
-            var totalQuestions ; //change this use length of json
+            var totalQuestions ; 
             var queNumber = document.getElementById("queNumber");
             var reqdQuestions = 3;
             snapshot.forEach(function(childSnapshot) {
@@ -18,7 +34,7 @@ $(document).ready(function(){
 //                console.log(questionAnswer);
                 i++;
             });
-            
+        
 //            console.log(Object.keys(questionAnswer["Question 1"]).length);
             
             totalQuestions = Object.keys(questionAnswer).length;
@@ -66,7 +82,7 @@ $(document).ready(function(){
                 if(isAnswered){
 
 //                    currentQuestion++;
-                    handleClick();
+                    handleOptionClick();
                 }
                 
                 else{
@@ -81,6 +97,7 @@ $(document).ready(function(){
                 {
                    var content = '<button id="op'+i+'" class="btn btn-outline-primary option" type = "button" value="'+j+'">'+questionAnswer["Question "+currentQuestion]["Option "+j]+'</button>';
             $("#opt-container").append(content); 
+                    
                 }
                 
             }
