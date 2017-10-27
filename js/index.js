@@ -82,7 +82,7 @@ $(document).ready(function(){
                 if(isAnswered){
 
 //                    currentQuestion++;
-                    handleOptionClick();
+                    handleClick();
                 }
                 
                 else{
