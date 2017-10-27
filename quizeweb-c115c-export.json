@@ -13,11 +13,10 @@
           "Option 6" : "I don't have a preference"
         },
         "Question 2" : {
-          "Name" : "What would you prefer as a pet?",
-          "Option 1" : "Danish",
-          "Option 2" : "Dogs",
-          "Option 3" : "Cats",
-          "Option 4" : "I don't like pets"
+          "Name" : "Which one would you rather have as a pet?",
+          "Option 1" : "Dogs",
+          "Option 2" : "Cats",
+          "Option 3" : "Don't like pets"
         },
         "Question 3" : {
           "Name" : "What superpower would you rather have?",
@@ -25,11 +24,116 @@
           "Option 2" : "Time Traveller",
           "Option 3" : "Super Strength",
           "Option 4" : "Lightning Speed"
+        },
+        "Question 4" : {
+          "Name" : "What is your favorite leisure activity?",
+          "Option 1" : "Shopping",
+          "Option 2" : "Playing Sports",
+          "Option 3" : "Playing Video Games",
+          "Option 4" : "Watching T.V. Shows",
+          "Option 5" : "Singing/Dancing",
+          "Option 6" : "Watching Movies",
+          "Option 7" : "Reading",
+          "Option 8" : "Sleeping"
+        },
+        "Question 5" : {
+          "Name" : "How many selfies do you take in a day?",
+          "Option 1" : "Don't like taking selfies",
+          "Option 2" : "One selfie a day",
+          "Option 3" : "5-10 selfies a day",
+          "Option 4" : "10+ selfies a day"
         }
       }
     }
   },
   "Users" : {
+    "-KxS0hVG7nW5JMdiqWGX" : {
+      "Name" : "Anshul",
+      "Quiz 1" : {
+        "Questions" : {
+          "Question 1" : {
+            "Correct" : "Pink"
+          },
+          "Question 2" : {
+            "Correct" : "Danish"
+          },
+          "Question 3" : {
+            "Correct" : "Lightning Speed"
+          }
+        }
+      }
+    },
+    "-KxS1TwwfYDdjxBpkKd_" : {
+      "Name" : "Gagan"
+    },
+    "-KxS1dE8KMH50BUnHAzT" : {
+      "Name" : "test",
+      "Quiz 1" : {
+        "Questions" : {
+          "Question 1" : {
+            "Correct" : "Purple"
+          }
+        }
+      }
+    },
+    "-KxS1yc-GMK4v2jeMgKi" : {
+      "Name" : "danlul",
+      "Quiz 1" : {
+        "Questions" : {
+          "Question 2" : {
+            "Correct" : "I don't like pets"
+          },
+          "Question 3" : {
+            "Correct" : "Time Traveller"
+          }
+        }
+      }
+    },
+    "-KxS2_wdmkFVz3AXajS5" : {
+      "Name" : "danny",
+      "Quiz 1" : {
+        "Questions" : {
+          "Question 1" : {
+            "Correct" : "Blue"
+          },
+          "Question 3" : {
+            "Correct" : "Lightning Speed"
+          }
+        }
+      }
+    },
+    "-KxS2teJ8dYEUxiamS8L" : {
+      "Name" : "dauhdad",
+      "Quiz 1" : {
+        "Questions" : {
+          "Question 1" : {
+            "Correct" : "Red"
+          },
+          "Question 2" : {
+            "Correct" : "I don't like pets"
+          },
+          "Question 3" : {
+            "Correct" : "Super Strength"
+          }
+        }
+      }
+    },
+    "-KxS5NNwCjryZRxTKCjt" : {
+      "Name" : "heartful",
+      "Quiz 1" : {
+        "Questions" : {
+          "Question 1" : {
+            "Correct" : "Pink"
+          },
+          "Question 2" : {
+            "Correct" : "Danish"
+          },
+          "Question 3" : {
+            "Correct" : "Super Strength"
+          }
+        }
+      }
+    },
     "-Xdbjaksda" : {
       "Name" : "Anshul",
       "Quiz 1" : {

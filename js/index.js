@@ -18,6 +18,7 @@ $(document).ready(function(){
     });
 
     });
+    
     var questionAnswer = {};
     var questionsAnswered = [];
     $("#skip").hide();
@@ -28,7 +29,7 @@ $(document).ready(function(){
             var nthquestion = 1;
             var totalQuestions ; 
             var queNumber = document.getElementById("queNumber");
-            var reqdQuestions = 3;
+            var reqdQuestions = 4;
             snapshot.forEach(function(childSnapshot) {
                 var json = childSnapshot.val();
                 questionAnswer["Question "+i] = json;
@@ -57,7 +58,6 @@ $(document).ready(function(){
             $("#opt-container").append(content);
                     $("#op"+j).click(function(){
                       var ans = $(this).html();
-                        alert(ans);
                         userRef.child("Quiz 1").child("Questions").child("Question "+currentQuestion).set({Correct:ans}).then(function() {
     console.log('Synchronization succeeded');
 
@@ -109,8 +109,13 @@ $(document).ready(function(){
                    var content = '<button id="op'+j+'" class="btn btn-outline-primary option" type = "button" value="'+j+'">'+questionAnswer["Question "+currentQuestion]["Option "+j]+'</button>';
             $("#opt-container").append(content); 
                     $("#op"+j).click(function(){
-                      var test = $(this).html();
-                        alert(test);
+                      var ans = $(this).html();
+                        userRef.child("Quiz 1").child("Questions").child("Question "+currentQuestion).set({Correct:ans}).then(function() {
+    console.log('Synchronization succeeded');
+
+  })
+                        
+                        
                     });
                     
                 }
@@ -163,8 +168,17 @@ $(document).ready(function(){
                     for(var j = 0 ; j < Object.keys(questionAnswer["Question "+currentQuestion]).length ; j++){
                 if(Object.keys(questionAnswer["Question "+currentQuestion])[j]!=="Name")
                 {
-                   var content = '<button id="op'+i+'" class="btn btn-outline-primary option" type = "button" value="'+j+'">'+questionAnswer["Question "+currentQuestion]["Option "+j]+'</button>';
+                   var content = '<button id="op'+j+'" class="btn btn-outline-primary option" type = "button" value="'+j+'">'+questionAnswer["Question "+currentQuestion]["Option "+j]+'</button>';
             $("#opt-container").append(content); 
+                     $("#op"+j).click(function(){
+                      var ans = $(this).html();
+                        userRef.child("Quiz 1").child("Questions").child("Question "+currentQuestion).set({Correct:ans}).then(function() {
+    console.log('Synchronization succeeded');
+
+  })
+                        
+                        
+                    });
                 }
                 
             }
