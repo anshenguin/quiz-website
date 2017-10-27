@@ -1,12 +1,13 @@
 //console.log(user.name);
 
 $(document).ready(function(){
+     var userRef = firebase.database().ref().child("Users").push();
     var name = "";
      $("#quiz").hide();
     $("#submitButton").click(function(){
-    var rootRef = firebase.database().ref().child("Users").push();
+   
     name = $("#name").val();
-    rootRef.set({Name:name}).then(function() {
+    userRef.set({Name:name}).then(function() {
     console.log('Synchronization succeeded');
         $("#user").fadeOut(function(){
          $("#quiz").fadeIn();   
@@ -52,8 +53,18 @@ $(document).ready(function(){
             for(var j = 0 ; j < Object.keys(questionAnswer["Question "+currentQuestion]).length ; j++){
                 if(Object.keys(questionAnswer["Question "+currentQuestion])[j]!=="Name")
                 {
-                   var content = '<button id="op'+i+'" class="btn btn-outline-primary option" type = "button" value="'+j+'">'+questionAnswer["Question "+currentQuestion]["Option "+j]+'</button>';
-            $("#opt-container").append(content); 
+                   var content = '<button id="op'+j+'" class="btn btn-outline-primary option" type = "button" value="'+j+'">'+questionAnswer["Question "+currentQuestion]["Option "+j]+'</button>';
+            $("#opt-container").append(content);
+                    $("#op"+j).click(function(){
+                      var ans = $(this).html();
+                        alert(ans);
+                        userRef.child("Quiz 1").child("Questions").child("Question "+currentQuestion).set({Correct:ans}).then(function() {
+    console.log('Synchronization succeeded');
+
+  })
+                        
+                        
+                    });
                 }
                 
             }
@@ -95,15 +106,25 @@ $(document).ready(function(){
                     for(var j = 0 ; j < Object.keys(questionAnswer["Question "+currentQuestion]).length ; j++){
                 if(Object.keys(questionAnswer["Question "+currentQuestion])[j]!=="Name")
                 {
-                   var content = '<button id="op'+i+'" class="btn btn-outline-primary option" type = "button" value="'+j+'">'+questionAnswer["Question "+currentQuestion]["Option "+j]+'</button>';
+                   var content = '<button id="op'+j+'" class="btn btn-outline-primary option" type = "button" value="'+j+'">'+questionAnswer["Question "+currentQuestion]["Option "+j]+'</button>';
             $("#opt-container").append(content); 
+                    $("#op"+j).click(function(){
+                      var test = $(this).html();
+                        alert(test);
+                    });
                     
                 }
+                        
+                        
                 
-            }
-               
+            }       
+//                    window.alert($("#op3").html());
+                    
                     
                     });
+                    
+
+               
                      }
             }
             
