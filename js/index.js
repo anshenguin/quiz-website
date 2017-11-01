@@ -3,7 +3,8 @@
 $(document).ready(function(){
      var userRef = firebase.database().ref().child("Users").push();
     var name = "";
-     $("#quiz").hide();
+    $("#quiz").hide();
+    $("#quiz-link").hide();
     $("#submitButton").click(function(){
    
     name = $("#name").val();
@@ -75,7 +76,9 @@ $(document).ready(function(){
             function handleOptionClick(){
             if(nthquestion === reqdQuestions){
                 currentQuestion = 100;
+                
             }
+                
             questionsAnswered.push(currentQuestion);
                 console.log(questionsAnswered);
                 currentQuestion++;
@@ -97,9 +100,14 @@ $(document).ready(function(){
                 }
                 
                 else{
+                    
+                
                 $(".questions").fadeOut(function(){
-                    $(".questions").fadeIn();
+                   
+                    if(!(currentQuestion >= 100)){
+                         $(".questions").fadeIn();
                     $("#skip").fadeIn();
+                    console.log(currentQuestion);
                     queNumber.innerHTML = nthquestion + "/" + totalQuestions;
                     document.getElementById("q1").innerHTML= questionAnswer["Question "+currentQuestion]["Name"];
                     $("#opt-container").html("");
@@ -122,7 +130,16 @@ $(document).ready(function(){
                         
                         
                 
-            }       
+            } 
+                    }
+                    
+                    else{
+                        $("#quiz").fadeOut(function(){
+                     $("#quiz-link").fadeIn(); 
+                          $("#quizlink").append("http://gaganjoshiweb-com.stackstaging.com/quiz-website/"+Date.now());  
+                            
+                });
+                    }
 //                    window.alert($("#op3").html());
                     
                     
@@ -131,6 +148,7 @@ $(document).ready(function(){
 
                
                      }
+                
             }
             
             // Click On SKIP
